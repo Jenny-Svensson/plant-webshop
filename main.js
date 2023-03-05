@@ -35,7 +35,7 @@ const products = [
     },
     {
         name: "Nephrolepis Exaltata",
-        price: 699,
+        price: 99,
         amount: 0,
         description: "Nephrolepis Exaltata is a plant...",
         img: "pic/Nephrolepis_exaltata.jpg", 
@@ -59,14 +59,14 @@ const products = [
     },
     {
         name: "Porslinsblomma",
-        price: 699,
+        price: 199,
         amount: 0,
         description: "Porslinsblomma is a plant...",
         img: "pic/Porslinsblomma.jpg", 
         alt: "porslinsblomma",
     },
     {
-        name: "Strelitzia_nicolai",
+        name: "Strelitzia Nicolai",
         price: 699,
         amount: 0,
         description: "Strelitzia Nicolai is a plant...",
@@ -83,18 +83,14 @@ function printProducts(products) {
     for(let i = 0; i < products.length; i++){
         productContainer.innerHTML += 
         `
-        <table>
-        <tr>
-            <th>
+        <div class="plant-container">
             <h3 class="plantName"> ${products[i].name}</h3>
             <img id="imgOfPlant" class="img-of-plant" src="${products[i].img} "alt ="" /><br>
             Price: <span class="price">${products[i].price} SEK </span><br>
             <button class="remove" data-operator="minus" data-id="${i}">-</button>
             <span class="amount">${products[i].amount} st</span>
             <button class="add" data-operator="plus" data-id="${i}">+</button>
-            </th>
-        </tr>
-        </table>
+        <div>
          `;
         }
 

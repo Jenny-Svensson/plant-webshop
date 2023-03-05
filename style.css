@@ -118,6 +118,19 @@ div > input {
   margin: 10px;
 
 }
+
+#products-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.plant-container {
+  text-align: center;
+}
+
 footer {
   display: grid;
   grid-template-columns: 1fr 1fr;
