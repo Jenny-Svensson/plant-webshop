@@ -75,7 +75,21 @@ const products = [
     },
 ];
 
-const productContainer = document.querySelector('#products-container');
+const productContainer = document.getElementById('products-container');
+const cartBtn = document.getElementById('cartBtn');
+const cartContainer = document.getElementById('cartContainer');
+
+cartBtn.addEventListener('click', openCartContainer, false);
+
+
+function openCartContainer() {
+    if (cartContainer.className === "active") {
+      cartContainer.className = "";
+    } else {
+      cartContainer.className = "active";
+    }
+  };
+
 
 function printProducts(products) {
     productContainer.innerHTML = '';
@@ -107,6 +121,19 @@ function printProducts(products) {
         products[plantChoosed].amount += 1;
 
         printProducts(products);
+
+        /** cart-container */
+        let total = products[plantChoosed].amount * products[plantChoosed].price;
+
+        cartContainer.innerHTML += "";
+        let p = document.createElement('p');
+        p.id = products[plantChoosed].name;
+
+        
+        p.innerHTML = `${products[plantChoosed].name} - ${total}SEK `
+        cartContainer.appendChild(p);
+            
+
     };
 
     function reduceAmount(e) {
@@ -121,11 +148,18 @@ function printProducts(products) {
             products[plantChoosed].amount -= 1
         };
 
-         printProducts(products);
+        /** cart-container */
+        let total = products[plantChoosed].amount * products[plantChoosed].price;
+
+        cartContainer.innerHTML += "";
+        let p = document.createElement('p');
+        p.innerHTML = `${products[plantChoosed].name} - ${total}SEK `
+        cartContainer.appendChild(p);
 
     };
-
-
 };
 
+
 printProducts(products);
+
+
