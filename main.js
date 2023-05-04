@@ -75,7 +75,21 @@ const products = [
     },
 ];
 
-const productContainer = document.querySelector('#products-container');
+const productContainer = document.getElementById('products-container');
+const cartBtn = document.getElementById('cartBtn');
+const cartContainer = document.getElementById('cartContainer');
+
+cartBtn.addEventListener('click', openCartContainer, false);
+
+
+function openCartContainer() {
+    if (cartContainer.className === "active") {
+      cartContainer.className = "";
+    } else {
+      cartContainer.className = "active";
+    }
+  };
+
 
 function printProducts(products) {
     productContainer.innerHTML = '';
@@ -107,6 +121,23 @@ function printProducts(products) {
         products[plantChoosed].amount += 1;
 
         printProducts(products);
+
+        let total = products[plantChoosed].amount * products[plantChoosed].price;
+
+        cartContainer.innerHTML += "";
+
+        let existingItem = document.getElementById(products[plantChoosed].name)
+
+        if(existingItem) {
+            existingItem.innerText = `${products[plantChoosed].name} - ${total}SEK `;
+        } else {
+            let p = document.createElement('p');
+            p.id = products[plantChoosed].name;
+
+            p.innerText = ` ${products[plantChoosed].name} - ${total}SEK `
+            cartContainer.appendChild(p);
+        }
+
     };
 
     function reduceAmount(e) {
@@ -121,11 +152,34 @@ function printProducts(products) {
             products[plantChoosed].amount -= 1
         };
 
-         printProducts(products);
+        printProducts(products);
+
+        /** cart-container */
+        let total = products[plantChoosed].amount * products[plantChoosed].price;
+
+        cartContainer.innerHTML += "";
+
+        let existingItem = document.getElementById(products[plantChoosed].name)
+        // remove element from cart if price 0 SEK
+        if (total === 0) {
+            if(existingItem) {
+                cartContainer.removeChild(existingItem);
+            }
+        }
+        else if(existingItem) {
+            existingItem.innerText = `${products[plantChoosed].name} - ${total}SEK `;
+        } else {
+            let p = document.createElement('p');
+            p.id = products[plantChoosed].name;
+
+            p.innerText = `${products[plantChoosed].name} - ${total}SEK `
+            cartContainer.appendChild(p);
+        }
 
     };
-
-
 };
 
+
 printProducts(products);
+
+
