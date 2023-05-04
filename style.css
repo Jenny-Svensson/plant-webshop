@@ -65,38 +65,53 @@ li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 500px;
 }
 
-.first-page-text {
+.first-page-text-container {
   background: rgb(241,241,241);
   background: linear-gradient(90deg, rgba(241,241,241,1) 0%, rgba(158,158,158,0.19940476190476186) 17%);
 }
 
-h1 {
+
+.mons {
   font-family: 'Gloock', serif;
-  font-size: 8rem;
-  margin-bottom: 5px;
-  margin-left: 10px;
-  margin-right: 10px;
+  font-size: 25rem;
+  position: absolute;
+  margin-top: 10px;
   color: #00000031;
+  letter-spacing: -2.1rem;
 }
 
-p {
-  margin-left: 40px;
-  margin-right: 10px;
+.tera {
+  font-family: 'Gloock', serif;
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  margin-right: 50px;
+  font-size: 15rem;
+  color: #00000044;
+  letter-spacing: -2rem;
+}
+
+.monstera-text {
+  position: absolute;
+  top: 34rem;
   width: 500px;
   text-align: center;
+  right: 0;
+  margin-right: 50px;
 }
 
 .second-page-container {
   background-color: white;
 }
 
-h3 {
+.product-title-container {
   font-size: 2rem;
   text-align: center;
-  padding-top: 20px;
-  margin: 2rem;
+  margin-top: 2rem;
+  background-color: #acacac;
 }
 
 table {
