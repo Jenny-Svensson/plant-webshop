@@ -81,6 +81,7 @@ li a:hover {
   margin-left: -10rem;
   color: #00000031;
   letter-spacing: 3rem;
+  z-index: -5;
 }
 
 .tera {
@@ -92,6 +93,7 @@ li a:hover {
   font-size: 20rem;
   color: #00000061;
   letter-spacing: 1rem;
+  z-index: -5;
 }
 
 .monstera-text {
@@ -111,6 +113,7 @@ li a:hover {
   text-align: center;
   margin-top: 2rem;
   background-color: #acacac;
+  font-family: 'Poppins', sans-serif;
 }
 
 table {
@@ -140,6 +143,7 @@ div > input {
   grid-template-rows: repeat(3, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  font-family: 'Poppins', sans-serif;
 }
 
 .plant-container {
@@ -162,6 +166,7 @@ div > input {
   transition:all 0.5s ease;
   float: right;
   color: white;
+  text-align: center;
 }
 
 #cartContainer.active {
@@ -171,9 +176,9 @@ div > input {
   height:auto;
   background:gray;
   position:fixed;
-  opacity: 90%;
   transition:all 0.5s ease;
   float: right;
+  z-index: 7;
 }
 
 footer {
