@@ -6,7 +6,7 @@ const products = [
         price: 499,
         amount: 0,
         description: "Benjaminfikus is a plant... ",
-        img: "pic/Benjaminfikus.jpg", 
+        img: "pic/Benjaminfikus.jpg",
         alt: "benjaminfikus",
     },
     {
@@ -14,7 +14,7 @@ const products = [
         price: 399,
         amount: 0,
         description: "Citronfikus is a plant...",
-        img: "pic/Citronfikus.jpg", 
+        img: "pic/Citronfikus.jpg",
         alt: "citronfikus",
     },
     {
@@ -22,7 +22,7 @@ const products = [
         price: 199,
         amount: 0,
         description: "Filodendron is a plant...",
-        img: "pic/filodendron.jpg", 
+        img: "pic/filodendron.jpg",
         alt: "filodendron",
     },
     {
@@ -30,7 +30,7 @@ const products = [
         price: 299,
         amount: 0,
         description: "Guldplam is a plant...",
-        img: "/pic/Guldpalm.jpg", 
+        img: "/pic/Guldpalm.jpg",
         alt: "guldplam",
     },
     {
@@ -38,7 +38,7 @@ const products = [
         price: 99,
         amount: 0,
         description: "Nephrolepis Exaltata is a plant...",
-        img: "pic/Nephrolepis_exaltata.jpg", 
+        img: "pic/Nephrolepis_exaltata.jpg",
         alt: "nephrolepis Exaltata",
     },
     {
@@ -46,7 +46,7 @@ const products = [
         price: 199,
         amount: 0,
         description: "Peperomia Exaltata is a plant...",
-        img: "pic/Peperomia.jpg", 
+        img: "pic/Peperomia.jpg",
         alt: "peperomia",
     },
     {
@@ -54,7 +54,7 @@ const products = [
         price: 399,
         amount: 0,
         description: "Pinnlilja is a plant...",
-        img: "pic/Pinnlilja.jpg", 
+        img: "pic/Pinnlilja.jpg",
         alt: "pinnlilja",
     },
     {
@@ -62,7 +62,7 @@ const products = [
         price: 199,
         amount: 0,
         description: "Porslinsblomma is a plant...",
-        img: "pic/Porslinsblomma.jpg", 
+        img: "pic/Porslinsblomma.jpg",
         alt: "porslinsblomma",
     },
     {
@@ -70,7 +70,7 @@ const products = [
         price: 699,
         amount: 0,
         description: "Strelitzia Nicolai is a plant...",
-        img: "pic/Strelitzia_nicolai.jpg", 
+        img: "pic/Strelitzia_nicolai.jpg",
         alt: "strelitzia nicolai",
     },
 ];
@@ -84,19 +84,19 @@ cartBtn.addEventListener('click', openCartContainer, false);
 
 function openCartContainer() {
     if (cartContainer.className === "active") {
-      cartContainer.className = "";
+        cartContainer.className = "";
     } else {
-      cartContainer.className = "active";
+        cartContainer.className = "active";
     }
-  };
+};
 
 
 function printProducts(products) {
     productContainer.innerHTML = '';
 
-    for(let i = 0; i < products.length; i++){
-        productContainer.innerHTML += 
-        `
+    for (let i = 0; i < products.length; i++) {
+        productContainer.innerHTML +=
+            `
         <div class="plant-container">
             <h3 class="plantName"> ${products[i].name}</h3>
             <img id="imgOfPlant" class="img-of-plant" src="${products[i].img} "alt ="" /><br>
@@ -106,15 +106,15 @@ function printProducts(products) {
             <button class="add" data-operator="plus" data-id="${i}">+</button>
         <div>
          `;
-        }
+    }
 
     const btnAdd = document.querySelectorAll('button[data-operator="plus"]');
     const btnReduce = document.querySelectorAll('button[data-operator="minus"]');
-  
-    for (let i= 0; i < btnAdd.length; i++) {
+
+    for (let i = 0; i < btnAdd.length; i++) {
         btnAdd[i].addEventListener('click', addAmount)
         btnReduce[i].addEventListener('click', reduceAmount)
-      }
+    }
 
     function addAmount(e) {
         const plantChoosed = e.currentTarget.dataset.id;
@@ -128,7 +128,7 @@ function printProducts(products) {
 
         let existingItem = document.getElementById(products[plantChoosed].name)
 
-        if(existingItem) {
+        if (existingItem) {
             existingItem.innerText = `${products[plantChoosed].name} - ${total}SEK `;
         } else {
             let p = document.createElement('p');
@@ -144,11 +144,11 @@ function printProducts(products) {
         const plantChoosed = e.currentTarget.dataset.id;
         let amount = plantChoosed.innerHTML;
 
-        if(amount -1 < 0) {
+        if (amount - 1 < 0) {
             return;
         }
 
-        if(products[plantChoosed].amount > 0) {
+        if (products[plantChoosed].amount > 0) {
             products[plantChoosed].amount -= 1
         };
 
@@ -162,11 +162,11 @@ function printProducts(products) {
         let existingItem = document.getElementById(products[plantChoosed].name)
         // remove element from cart if price 0 SEK
         if (total === 0) {
-            if(existingItem) {
+            if (existingItem) {
                 cartContainer.removeChild(existingItem);
             }
         }
-        else if(existingItem) {
+        else if (existingItem) {
             existingItem.innerText = `${products[plantChoosed].name} - ${total}SEK `;
         } else {
             let p = document.createElement('p');
@@ -179,7 +179,15 @@ function printProducts(products) {
     };
 };
 
+function checkOutCart() {
+    let checkOutBtn = document.createElement('button')
+    checkOutBtn.innerHTML = "Checkout";
+
+    cartContainer.appendChild(checkOutBtn);
+}
+
 
 printProducts(products);
+checkOutCart();
 
 
